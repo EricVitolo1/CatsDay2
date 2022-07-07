@@ -34,10 +34,37 @@ const updatepicture = async (e) => {
         }
     };
 
-
-
-window.addEventListener("DOMContentLoaded", event => {
     const changePicBtn = document.getElementById('picturechange')
     changePicBtn.addEventListener('click', updatepicture)
+    // const upvoteBtn = document.getElementById("counter")
+
+    let data = 0
+    document.getElementById('counter').innerText = data
+    function incrementVote() {
+        data = data + 1;
+        document.getElementById('counter').innerText = data
+    }
+
+    function decrementVote(){
+        data = data -1;
+        document.getElementById('counter').innerText = data
+    }
+
+    const addComment = (e) => {
+        e.preventDefault();
+        const commentsInput = document.getElementById('commentBox');
+        const newComment = commentsInput.value;
+
+        const newPost = document.createElement('li');
+        newPost.innerText = newComment;
+
+        textBox.appendChild(newPost)
+    }
+
+window.addEventListener("DOMContentLoaded", event => {
+
+    upvote.addEventListener('click', incrementVote)
+    downvote.addEventListener('click', decrementVote)
+    postComment.addEventListener('click', addComment)
 
 })
